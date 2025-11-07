@@ -29,7 +29,7 @@ export default function Index() {
     e.preventDefault();
     setIsDragging(false);
     const droppedFile = e.dataTransfer.files[0];
-    if (droppedFile && droppedFile.type.startsWith('video/')) {
+    if (droppedFile && (droppedFile.type.startsWith('video/') || droppedFile.type.startsWith('audio/'))) {
       setFile(droppedFile);
     }
   };
@@ -101,7 +101,7 @@ export default function Index() {
                   >
                     <input
                       type="file"
-                      accept="video/*"
+                      accept="video/*,audio/*"
                       onChange={handleFileSelect}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       id="file-upload"
@@ -139,7 +139,7 @@ export default function Index() {
                           <p className="text-sm text-gray-500 mb-6">or click to browse</p>
                           <div className="inline-flex items-center gap-2 text-xs text-gray-400">
                             <Icon name="Info" size={14} />
-                            <span>Supports MP4, MOV, AVI up to 500MB</span>
+                            <span>Supports MP4, MOV, AVI, MP3, WAV up to 500MB</span>
                           </div>
                         </>
                       )}

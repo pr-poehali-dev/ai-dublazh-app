@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST with audio data (no API keys)",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "audio": "base64_audio_data_here",
+        "source_language": "ru",
+        "target_language": "en",
+        "voice_similarity": 85
+      },
+      "expectedStatus": 500,
+      "expectedBody": {
+        "error": "API keys not configured"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
